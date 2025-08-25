@@ -1,0 +1,50 @@
+-----------
+
+1.Identify two differences in the overall results of the two methods and explain why these differences might be occurring.
+
+
+using the MiniLM-based sentence embeddings focus more on job-seeking activities and opportunities directly related to employment, and inquiries about job openings. It includes tweets explicitly stating the need for a job, asking for recommendations for job opportunities, and sharing job listings in specific locations.
+
+using the GloVe-based sentence embeddings seem to include tweets that express sentiments related to job satisfaction, appreciation for good work, and emotional express instead of focusing on the job-seeking. "doing a great job", "love my job", "ready for another day on the job"
+
+
+a.Vocabulary Coverage and Embedding Quality:
+
+The scope and coverage of the training data used for each embedding method is different. 
+GloVe embeddings are trained on a large corpus of text data, but does not cover specific domains or topics comprehensively. GloVe embeddings are based on word co-occurrence statistics, which can not capture contextual information but only similary words
+
+MiniLM, which is derived from BERT, a contextual language model. It is trained on large amounts of text data and captures contextual relationships between words. MiniLM embeddings provides more related representations of the query and documents
+
+
+
+b.Model Architecture and Training Data:
+
+
+GloVe embeddings are trained using global word co-occurrence statistics. It prioritizs semantic relationships between words instead of contextual semantic information. As a result, tweets containing words realating to 'job'(feeling on the job), 'look(verbal)'; job-related sentiments,  are likely to be ranked higher in similarity.
+
+MiniLM embeddings are derived from a pre-trained BERT model, which uses a transformer architecture trained on diverse text sources. This allows capturing complex patterns and contextual information. It leads to more accurate embeddings compared to traditional methods like GloVe. MiniLM are trained on vast amounts of diverse text data which learns rich representations of language. Even if tweet do not explicitly mention job-related terms, with understanding the contexts of the query, it leads to a wider range of relevant tweets being retrieved
+
+
+
+-----------
+
+
+2.Try out the query in Twitter’s own search on their website. (Note you don’t need an account to try it.) Do you think Twitter might be using a semantic search technique like the ones you tried? Why or why not?
+
+
+Yes,
+
+Twitter's search functionality needs to understand the intent and context behind user queries
+
+Twitter could be using embedding techniques like BERT or its variants to represent tweets and user queries in a high-dimensional vector space for computing similarities between queries and tweets efficiently.  
+
+Understanding contextual information is required for user preference, relavante tweets to improve search result ranks
+
+Semantic search techniques allow Twitter to match user queries with tweets that contain semantically similar content, even if the exact words or phrases don't match.
+
+Semantic search technique does not only retrieve relevant tweets but also rank them based on their relevance to the query.
+
+Semantic search techniques can handle similar words with same meaning, and variations in language usage. such as "job" similar to "employment opportunities", this allow Twitter return more search results
+
+
+-----------

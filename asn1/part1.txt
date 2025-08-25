@@ -1,0 +1,116 @@
+
+-------------
+
+Basic Indexing
+
+
+1.Follow along with the Getting Started Guide Exploring Your Cluster chapter https://www.elastic.co/guide/en/elasticsearch/reference/6.7/getting-started-explore.html, from the Cluster Health up to and including the Delete an Index section of the chapter. For each command in the Starting Guide, click the Copy as cURL link and paste the command into your command window. Run the command, and copy the command and its output into a text file called elasticcommands.txt for submission. Note that we want you to follow along with the old version (6.7) of the guide, but it will work with the newest version of elastic search.
+
+
+
+2.Explain in one sentence why we might break an index into shards.
+
+distribute data across multiple nodes, improving performance, and the ability to handle larger datasets.
+
+
+
+3.Explain in one sentence why we might replicate an index.
+
+Create duplicate copies of the index's data across multiple nodes to provide fault tolerance and high availability and ensure continued accessibility and resilience in the event of node failures.
+
+
+4.Explain in one sentence why your cluster health is yellow.
+
+some/all replica shards are not assigned, indicating potential issues with data redundancy and fault tolerance.
+
+
+-------------
+
+
+Indexing Reddit
+
+1.Ensure that your Elasticsearch instance has no indices in it. Provide the command you used to verify this.
+
+
+
+2.Find the test.json file provided in the zip. Run the following command, ensuring that you do this from the same folder that has the test.json file in it. What is the name of the index created by the command? Mac or Linux:
+
+comments
+
+
+3.How large is the index? (pri.store.size)
+
+31.7mb
+
+-------------
+
+
+Search (15)
+
+
+1.Do the three queries below return different sets of documents? How can you tell?
+
+Yes, different set of documents. Inside the return response, “hits.total” are different for each query. Elements of “hits.hits” are different for each query.
+
+
+
+
+2.Give the highest score for each query.
+
+10.503806, 11.629242, 18.84402,
+
+
+
+
+3.What can you deduce about the default stemming procedure used by Elasticsearch?
+
+The default Elasticsearch does not stem any word. Because “cat” and “cats” does not return same result
+
+
+
+4.Give a query that could be used to check whether or not Elasticsearch removes a common English stopword.
+
+curl -XGET 'localhost:9200/_search?pretty' -H 'Content-Type: application/json' -d'
+{ "query": { "match" : { "body" : { "query" : "a"} } } } '
+Elasticsearch does not remove the common English stopword “a” by default, as documents containing this word are returned in the search results by searching "a".
+
+
+-------------
+
+Analyzers (15)
+
+
+
+
+1.Delete the all indices in your Elasticsearch instance before beginning this section. Submit the code you use to do so.
+
+option 1: curl -X DELETE "localhost:9200/comments?pretty&pretty"
+
+option 2: curl -X DELETE "localhost:9200/_all" (this require changing config "action.destructive_requires_name: false" )
+
+option 2: curl -X DELETE "localhost:9200/*" (this require changing config "action.destructive_requires_name: false" )
+
+
+
+
+
+2.To change how Elasticsearch indexes documents, we provide settings for an index before documents are added to it. (This is why we had to delete all indices before running these next commands.) Run the following two (quite large) commands to change the default stemming behaviour. The first defines a new analyzer, my_analyzer, which uses a stemmer. It creates a comments index and adds this analyzer to it. The second informs Elasticsearch that it should use my_analyzer when analyzing the body field of documents going into the comments index.
+
+
+
+
+1.Re-run the three queries from the previous section. In a few sentences, describe how the results have changed.
+
+the results of three query are different than previous run. All three query in this section return the same set of documents. Values of “hits.total” and “hits.hits” are the same among the three queries.
+
+
+
+2.Has the size of the index become larger or smaller compared with the previous runs? Why do you think this might be?
+
+the size of the index became smaller compared with previous run. 31.7mb -> 15.5mb -> 24.8mb. reason would be it change the default elasticsearch behavior to use steaming which would allow elasticsearch to treat some tokens as a same root token. It reduces the size of tokens.
+
+-------------
+
+
+
+

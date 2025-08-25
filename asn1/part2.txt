@@ -1,0 +1,449 @@
+
+
+-------------
+
+
+The Lucene Demo (10)
+
+
+1.Submit the following queries to the Lucene 8.7.0 demo and paste the results. Note that we have included a testcases.txt file that you can pipe in to simplify testing, e.g. java MySearchFiles < testcases.txt
+
+
+```
+
+bhe54@bhe54-virtual-machine:~/Downloads/cs4417/submit/A1/Part2$ export CLASSPATH=.:lucene-8.7.0/demo/lucene-demo-8.7.0.jar:lucene-8.7.0/core/lucene-core-8.7.0.jar:lucene-8.7.0/queryparser/lucene-queryparser-8.7.0.jar:lucene-8.7.0/analysis/common/lucene-analyzers-common-8.7.0.jar
+bhe54@bhe54-virtual-machine:~/Downloads/cs4417/submit/A1/Part2$ javac *.java
+bhe54@bhe54-virtual-machine:~/Downloads/cs4417/submit/A1/Part2$ java MyIndexFiles -docs documents/
+Indexing to directory 'index'...
+adding documents/D4.txt
+adding documents/D5.txt
+adding documents/D10.txt
+adding documents/D6.txt
+adding documents/D8.txt
+adding documents/D3.txt
+adding documents/D7.txt
+adding documents/D2.txt
+adding documents/D1.txt
+adding documents/D9.txt
+247 total milliseconds
+bhe54@bhe54-virtual-machine:~/Downloads/cs4417/submit/A1/Part2$ java MySearchFiles < testcases.txt
+Enter query: 
+Searching for: his fiery sword
+5 total matching documents
+1. documents/D3.txt
+2. documents/D5.txt
+3. documents/D4.txt
+4. documents/D10.txt
+5. documents/D6.txt
+Press (q)uit or enter number to jump to a page.
+Enter query: 
+Searching for: alas o love
+5 total matching documents
+1. documents/D6.txt
+2. documents/D8.txt
+3. documents/D7.txt
+4. documents/D2.txt
+5. documents/D9.txt
+Press (q)uit or enter number to jump to a page.
+Enter query: 
+Searching for: and
+8 total matching documents
+1. documents/D3.txt
+2. documents/D9.txt
+3. documents/D5.txt
+4. documents/D1.txt
+5. documents/D4.txt
+6. documents/D8.txt
+7. documents/D7.txt
+8. documents/D2.txt
+Press (q)uit or enter number to jump to a page.
+Enter query: 
+Searching for: reckon
+0 total matching documents
+Enter query: 
+Searching for: q
+0 total matching documents
+Enter query: 
+Searching for: love
+4 total matching documents
+1. documents/D6.txt
+2. documents/D7.txt
+3. documents/D2.txt
+4. documents/D9.txt
+Press (q)uit or enter number to jump to a page.
+Enter query: 
+Searching for: fair
+3 total matching documents
+1. documents/D10.txt
+2. documents/D9.txt
+3. documents/D2.txt
+Press (q)uit or enter number to jump to a page.
+Enter query: 
+bhe54@bhe54-virtual-machine:~/Downloads/cs4417/submit/A1/Part2$ ^C
+bhe54@bhe54-virtual-machine:~/Downloads/cs4417/submit/A1/Part2$ 
+
+
+
+
+```
+
+bhe54@bhe54-virtual-machine:~/Downloads/cs4417/submit/A1/Part2$ export CLASSPATH=.:lucene-8.7.0/demo/lucene-demo-8.7.0.jar:lucene-8.7.0/core/lucene-core-8.7.0.jar:lucene-8.7.0/queryparser/lucene-queryparser-8.7.0.jar:lucene-8.7.0/analysis/common/lucene-analyzers-common-8.7.0.jar
+bhe54@bhe54-virtual-machine:~/Downloads/cs4417/submit/A1/Part2$ javac *.java
+bhe54@bhe54-virtual-machine:~/Downloads/cs4417/submit/A1/Part2$ java org.apache.lucene.demo.IndexFiles -docs documents/
+Indexing to directory 'index'...
+adding documents/D4.txt
+adding documents/D5.txt
+adding documents/D10.txt
+adding documents/D6.txt
+adding documents/D8.txt
+adding documents/D3.txt
+adding documents/D7.txt
+adding documents/D2.txt
+adding documents/D1.txt
+adding documents/D9.txt
+241 total milliseconds
+bhe54@bhe54-virtual-machine:~/Downloads/cs4417/submit/A1/Part2$ java org.apache.lucene.demo.SearchFiles < testcases.txt
+Enter query: 
+Searching for: his fiery sword
+5 total matching documents
+1. documents/D3.txt
+2. documents/D5.txt
+3. documents/D4.txt
+4. documents/D10.txt
+5. documents/D6.txt
+Press (q)uit or enter number to jump to a page.
+Enter query: 
+Searching for: alas o love
+5 total matching documents
+1. documents/D6.txt
+2. documents/D8.txt
+3. documents/D7.txt
+4. documents/D2.txt
+5. documents/D9.txt
+Press (q)uit or enter number to jump to a page.
+Enter query: 
+Searching for: and
+8 total matching documents
+1. documents/D3.txt
+2. documents/D9.txt
+3. documents/D5.txt
+4. documents/D1.txt
+5. documents/D4.txt
+6. documents/D8.txt
+7. documents/D7.txt
+8. documents/D2.txt
+Press (q)uit or enter number to jump to a page.
+Enter query: 
+Searching for: reckon
+0 total matching documents
+Enter query: 
+Searching for: q
+0 total matching documents
+Enter query: 
+Searching for: love
+4 total matching documents
+1. documents/D6.txt
+2. documents/D7.txt
+3. documents/D2.txt
+4. documents/D9.txt
+Press (q)uit or enter number to jump to a page.
+Enter query: 
+Searching for: fair
+3 total matching documents
+1. documents/D10.txt
+2. documents/D9.txt
+3. documents/D2.txt
+Press (q)uit or enter number to jump to a page.
+Enter query: 
+bhe54@bhe54-virtual-machine:~/Downloads/cs4417/submit/A1/Part2$ ^C
+bhe54@bhe54-virtual-machine:~/Downloads/cs4417/submit/A1/Part2$ 
+
+```
+
+
+
+2.Does the Lucene 8.7.0 demo use stopwords? Explain in one or two sentences how this can be deduced from the results of the queries above.
+
+no, because in question 1, there is a query on "and", the function of the lucene demo still returns documents with the query of "and". Therefore, there is no use of stopwords. Also, from the Lucene API document, the public StandardAnalyzer() Builds an analyzer with no stop words.
+
+
+
+
+
+3.Does the Lucene 8.7.0 demo do stemming? If so, what stemmer does it use? Explain in one or two sentences how this can be deduced from the results of the queries above.
+
+no, if it uses Porter stemming, then when you search "reckon", it should return a document(9) which has word stemming from, such as "reckoning" but it has zero documents. "reckoning" would be "reckon" if it use porter stemming, but when you search "reckon", return zero documents
+
+
+
+
+
+4.What is the default similarity metric used by the Lucene 8.7.0 demo to retrieve documents? Can this be deduced from the results of the above queries? If so, explain how.
+
+In the "java.lang.Object ->org.apache.lucene.search.similarities.Similarity" from Lucene 8.7.0 "Class Similarity" API. "...convenient way to alter Lucene's scoring, consider just tweaking the default implementation: BM25Similarity or...".
+Class IndexSearcher,"getSimilarity;public Similarity getSimilarity();Expert: Get the Similarity to use to compute scores. This returns the Similarity that has been set through setSimilarity(Similarity) or the default Similarity if none has been set explicitly."
+Class IndexWriterConfig,"setSimilarity;public IndexWriterConfig setSimilarity(Similarity similarity);Expert: set the Similarity implementation used by this IndexWriter. "
+no, it can not be decued from the the results of the above queries. we need athe relevance scores assigned to each document in the search results to find out the default similarity metric. But if you use -raw with searcher.java, you will see the scores, and you could tell it use BM25 when seaching "his fiery sword" and "alas o love"
+
+
+-------------
+
+
+Modifying the Demo
+
+
+-------------
+
+
+Stopping (10)
+
+```
+
+bhe54@bhe54-virtual-machine:~/Downloads/cs4417/submit/A1/Part2$ export CLASSPATH=.:lucene-8.7.0/demo/lucene-demo-8.7.0.jar:lucene-8.7.0/core/lucene-core-8.7.0.jar:lucene-8.7.0/queryparser/lucene-queryparser-8.7.0.jar:lucene-8.7.0/analysis/common/lucene-analyzers-common-8.7.0.jar
+bhe54@bhe54-virtual-machine:~/Downloads/cs4417/submit/A1/Part2$ javac *.java
+bhe54@bhe54-virtual-machine:~/Downloads/cs4417/submit/A1/Part2$ java MyIndexFiles -docs documents/
+Indexing to directory 'index'...
+adding documents/D4.txt
+adding documents/D5.txt
+adding documents/D10.txt
+adding documents/D6.txt
+adding documents/D8.txt
+adding documents/D3.txt
+adding documents/D7.txt
+adding documents/D2.txt
+adding documents/D1.txt
+adding documents/D9.txt
+247 total milliseconds
+bhe54@bhe54-virtual-machine:~/Downloads/cs4417/submit/A1/Part2$ java MySearchFiles < testcases.txt
+Enter query: 
+Searching for: fiery sword
+1 total matching documents
+1. documents/D3.txt
+Press (q)uit or enter number to jump to a page.
+Enter query: 
+Searching for: alas o love
+5 total matching documents
+1. documents/D6.txt
+2. documents/D8.txt
+3. documents/D7.txt
+4. documents/D2.txt
+5. documents/D9.txt
+Press (q)uit or enter number to jump to a page.
+Enter query: 
+Searching for: and
+8 total matching documents
+1. documents/D3.txt
+2. documents/D9.txt
+3. documents/D5.txt
+4. documents/D1.txt
+5. documents/D4.txt
+6. documents/D8.txt
+7. documents/D7.txt
+8. documents/D2.txt
+Press (q)uit or enter number to jump to a page.
+Enter query: 
+Searching for: reckon
+0 total matching documents
+Enter query: 
+Searching for: q
+0 total matching documents
+Enter query: 
+Searching for: love
+4 total matching documents
+1. documents/D6.txt
+2. documents/D7.txt
+3. documents/D2.txt
+4. documents/D9.txt
+Press (q)uit or enter number to jump to a page.
+Enter query: 
+Searching for: fair
+3 total matching documents
+1. documents/D10.txt
+2. documents/D9.txt
+3. documents/D2.txt
+Press (q)uit or enter number to jump to a page.
+Enter query: 
+bhe54@bhe54-virtual-machine:~/Downloads/cs4417/submit/A1/Part2$ 
+
+
+```
+
+
+-------------
+
+
+Stemming (15)
+
+
+```
+
+bhe54@bhe54-virtual-machine:~/Downloads/cs4417/submit/A1/Part2$ export CLASSPATH=.:lucene-8.7.0/demo/lucene-demo-8.7.0.jar:lucene-8.7.0/core/lucene-core-8.7.0.jar:lucene-8.7.0/queryparser/lucene-queryparser-8.7.0.jar:lucene-8.7.0/analysis/common/lucene-analyzers-common-8.7.0.jar
+bhe54@bhe54-virtual-machine:~/Downloads/cs4417/submit/A1/Part2$ javac *.java
+bhe54@bhe54-virtual-machine:~/Downloads/cs4417/submit/A1/Part2$ java MyIndexFiles -docs documents/
+Indexing to directory 'index'...
+adding documents/D4.txt
+adding documents/D5.txt
+adding documents/D10.txt
+adding documents/D6.txt
+adding documents/D8.txt
+adding documents/D3.txt
+adding documents/D7.txt
+adding documents/D2.txt
+adding documents/D1.txt
+adding documents/D9.txt
+257 total milliseconds
+bhe54@bhe54-virtual-machine:~/Downloads/cs4417/submit/A1/Part2$ java MySearchFiles < testcases.txt
+Enter query: 
+Searching for: fieri sword
+1 total matching documents
+1. documents/D3.txt
+Press (q)uit or enter number to jump to a page.
+Enter query: 
+Searching for: ala o love
+5 total matching documents
+1. documents/D6.txt
+2. documents/D8.txt
+3. documents/D7.txt
+4. documents/D2.txt
+5. documents/D9.txt
+Press (q)uit or enter number to jump to a page.
+Enter query: 
+Searching for: and
+8 total matching documents
+1. documents/D3.txt
+2. documents/D9.txt
+3. documents/D5.txt
+4. documents/D1.txt
+5. documents/D4.txt
+6. documents/D8.txt
+7. documents/D7.txt
+8. documents/D2.txt
+Press (q)uit or enter number to jump to a page.
+Enter query: 
+Searching for: reckon
+1 total matching documents
+1. documents/D9.txt
+Press (q)uit or enter number to jump to a page.
+Enter query: 
+Searching for: love
+5 total matching documents
+1. documents/D6.txt
+2. documents/D7.txt
+3. documents/D8.txt
+4. documents/D2.txt
+5. documents/D9.txt
+Press (q)uit or enter number to jump to a page.
+Enter query: 
+Searching for: fair
+3 total matching documents
+1. documents/D10.txt
+2. documents/D9.txt
+3. documents/D2.txt
+Press (q)uit or enter number to jump to a page.
+Enter query: 
+bhe54@bhe54-virtual-machine:~/Downloads/cs4417/submit/A1/Part2$ 
+
+
+
+
+```
+
+
+-------------
+
+
+
+Similarity (15)
+
+
+```
+
+bhe54@bhe54-virtual-machine:~/Downloads/cs4417/submit/A1/Part2$ export CLASSPATH=.:lucene-8.7.0/demo/lucene-demo-8.7.0.jar:lucene-8.7.0/core/lucene-core-8.7.0.jar:lucene-8.7.0/queryparser/lucene-queryparser-8.7.0.jar:lucene-8.7.0/analysis/common/lucene-analyzers-common-8.7.0.jar
+bhe54@bhe54-virtual-machine:~/Downloads/cs4417/submit/A1/Part2$ javac *.java
+bhe54@bhe54-virtual-machine:~/Downloads/cs4417/submit/A1/Part2$ java MyIndexFiles -docs documents/
+Indexing to directory 'index'...
+adding documents/D4.txt
+adding documents/D5.txt
+adding documents/D10.txt
+adding documents/D6.txt
+adding documents/D8.txt
+adding documents/D3.txt
+adding documents/D7.txt
+adding documents/D2.txt
+adding documents/D1.txt
+adding documents/D9.txt
+249 total milliseconds
+bhe54@bhe54-virtual-machine:~/Downloads/cs4417/submit/A1/Part2$ java MySearchFiles < testcases.txt
+Enter query: 
+Searching for: fieri sword
+1 total matching documents
+1. documents/D3.txt
+Press (q)uit or enter number to jump to a page.
+Enter query: 
+Searching for: ala o love
+5 total matching documents
+1. documents/D6.txt
+2. documents/D8.txt
+3. documents/D7.txt
+4. documents/D2.txt
+5. documents/D9.txt
+Press (q)uit or enter number to jump to a page.
+Enter query: 
+Searching for: and
+8 total matching documents
+1. documents/D3.txt
+2. documents/D5.txt
+3. documents/D9.txt
+4. documents/D4.txt
+5. documents/D1.txt
+6. documents/D8.txt
+7. documents/D7.txt
+8. documents/D2.txt
+Press (q)uit or enter number to jump to a page.
+Enter query: 
+Searching for: reckon
+1 total matching documents
+1. documents/D9.txt
+Press (q)uit or enter number to jump to a page.
+Enter query: 
+Searching for: love
+5 total matching documents
+1. documents/D6.txt
+2. documents/D7.txt
+3. documents/D8.txt
+4. documents/D2.txt
+5. documents/D9.txt
+Press (q)uit or enter number to jump to a page.
+Enter query: 
+Searching for: fair
+3 total matching documents
+1. documents/D10.txt
+2. documents/D9.txt
+3. documents/D2.txt
+Press (q)uit or enter number to jump to a page.
+Enter query: 
+bhe54@bhe54-virtual-machine:~/Downloads/cs4417/submit/A1/Part2$ 
+
+
+
+
+```
+
+
+-------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-------------

@@ -1,0 +1,18 @@
+CS4417B - Assignment 1
+TA: Christopher Steward (cstew2@uwo.ca)
+
+Part 1:				46/50	# 
+  Indexing:				# 
+    Basic Indexing:	12/12	-	# 
+    Indexing Reddit:    5/8	-	# 1)No answer
+  Search:               15/15	-	# 
+  Analyzers: 		13/15	-	# 2.1)Note that the max score for the third query is twice that of the other two
+Part 2:				50/50	# 
+  The Lucene Demo:      10/10	-	# 
+  Stopping:		10/10	-	# 
+  Stemming:		15/15	-	# 
+  Similarity:		15/15	-	# 
+  					# 
+Subtotal:		        96/100	# 
+Late Penalty:		0/25	-	# 5% of total mark for each day late
+Total:			        96/100	# 
